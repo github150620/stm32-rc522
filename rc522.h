@@ -81,3 +81,20 @@
 #define    Transceive        0x0C
 #define    MFAuthent         0x0E
 #define    SoftReset         0x0F
+
+void RC522_Init       (void);
+
+void RCC522_Config    (void); 
+
+void RC522_Reset      (void);
+
+void RC522_AntennaOff (void);
+void RC522_AntennaOn  (void);
+
+void RC522_SetReg     (u8 reg, u8 mask);
+void RC522_ResetReg   (u8 reg, u8 mask);
+
+u8   RC522_Read       (u8 addr);
+void RC522_Write      (u8 addr, u8 value);
+
+
