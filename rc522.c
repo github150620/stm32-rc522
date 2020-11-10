@@ -6,7 +6,7 @@
 //   NSS(SDA) <--> PA4(SPI1_NSS)
 //        SCK <--> PA5(SPI1_SCK)
 //       MISO <--> PA6(SPI1_MISO)
-//       MOSI <--> PA7(SPI1_MISO)
+//       MOSI <--> PA7(SPI1_MOSI)
 //
 #include "rc522.h"
 #include "stm32f10x.h"
