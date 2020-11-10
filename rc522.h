@@ -70,6 +70,26 @@
 #define     Reserved3E            0x3E   
 #define     Reserved3F		  	    0x3F
 
+// Table 16:
+#define    TxIRq         0x40
+#define    RxIRq         0x20
+#define    IdleIRq       0x10
+#define    HiAlertIRq    0x08
+#define    LoAlertIRq    0x04
+#define    ErrIRq        0x02
+#define    TimerIRq      0x01
+
+// Table 19: Description of ErrorReg bits
+#define    WrErr         0x80
+#define    TempErr       0x40
+//         -             0x20
+#define    BufferOvfl    0x10
+#define    CollErr       0x08
+#define    CRCErr        0x04
+#define    ParityErr     0x02
+#define    ProtocolErr   0x01
+
+
 // Table 149: Command overview
 #define    Idle              0x00
 #define    Mem               0x01
@@ -82,19 +102,19 @@
 #define    MFAuthent         0x0E
 #define    SoftReset         0x0F
 
-void RC522_Init       (void);
-
-void RCC522_Config    (void); 
-
+// depend on GPIO and SPI
 void RC522_Reset      (void);
-
-void RC522_AntennaOff (void);
-void RC522_AntennaOn  (void);
-
-void RC522_SetReg     (u8 reg, u8 mask);
-void RC522_ResetReg   (u8 reg, u8 mask);
-
 u8   RC522_Read       (u8 addr);
 void RC522_Write      (u8 addr, u8 value);
+
+// depend on read and write
+void RC522_SetRegBits    (u8 reg, u8 mask);
+void RC522_ClearRegBits  (u8 reg, u8 mask);
+
+// 
+void RC522_Init             (void);
+void RC522_Config_ISO14443A (void);
+void RC522_AntennaOff       (void);
+void RC522_AntennaOn        (void);
 
 
