@@ -12,8 +12,8 @@
 #include "stm32f10x.h"
 
 void SPI1_Init() {
- 	GPIO_InitTypeDef GPIO_InitStructure;
-  SPI_InitTypeDef  SPI_InitStructure;
+	GPIO_InitTypeDef GPIO_InitStructure;
+	SPI_InitTypeDef  SPI_InitStructure;
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
