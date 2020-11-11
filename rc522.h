@@ -5,7 +5,7 @@
 #define     Reserved00            0x00    
 #define     CommandReg            0x01    
 #define     ComIEnReg             0x02    
-#define     DivlEnReg             0x03    
+#define     DivIEnReg             0x03    
 #define     ComIrqReg             0x04    
 #define     DivIrqReg             0x05
 #define     ErrorReg              0x06    
@@ -70,24 +70,35 @@
 #define     Reserved3E            0x3E   
 #define     Reserved3F		  	    0x3F
 
-// Table 16:
-#define    TxIRq         0x40
-#define    RxIRq         0x20
-#define    IdleIRq       0x10
-#define    HiAlertIRq    0x08
-#define    LoAlertIRq    0x04
-#define    ErrIRq        0x02
-#define    TimerIRq      0x01
+// Table 15: CommIRqReg register (address 04h); reset value: 14h
+#define Set1        0x80
+#define TxIRq       0x40
+#define RxIRq       0x20
+#define IdleIRq     0x10
+#define HiAlertIRq  0x08
+#define LoAlertIRq  0x04
+#define ErrIRq      0x02
+#define TimerIRq    0x01
 
-// Table 19: Description of ErrorReg bits
-#define    WrErr         0x80
-#define    TempErr       0x40
-//         -             0x20
-#define    BufferOvfl    0x10
-#define    CollErr       0x08
-#define    CRCErr        0x04
-#define    ParityErr     0x02
-#define    ProtocolErr   0x01
+// Table 23: Status2Reg register (address 08h); reset value: 00h
+#define TempSensClear  0x80
+#define I2CForceHS     0x40
+#define MFCrypto1On    0x08
+#define ModemState     0x07
+
+// Table 27: FIFOLevelReg register (address 0Ah); reset value: 00h
+#define FlushBuffer    0x80
+#define FIFOLevel      0x7F
+
+// Table 31: ControlReg register (address 0Ch); reset value: 10h
+#define TStopNow       0x80
+#define TStartNow      0x40
+#define RxLastBits     0x07
+
+// Table 33: BitFramingReg register (address 0Dh); reset value: 00h
+#define StartSend      0x80
+#define RxAlign        0x70
+#define TxLastBits     0x07
 
 
 // Table 149: Command overview
