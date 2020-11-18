@@ -266,20 +266,6 @@ void RC522_Reset(void) {
 	delay(100);
 }
 
-void RC522_Config(void) {
-	RC522_ClearRegBits(Status2Reg, 0x08);
-	RC522_WriteReg(ModeReg, 0x3d);
-	RC522_WriteReg(RxSelReg, 0x86);
-	RC522_WriteReg(RFCfgReg, 0x7f);
-	RC522_WriteReg(TReloadRegL, 30);
-	RC522_WriteReg(TReloadRegH, 0);
-	RC522_WriteReg(TModeReg, 0x8d);
-	RC522_WriteReg(TPrescalerReg, 0x3e);
-	RC522_AntennaOff();
-	delay(200);
-	RC522_AntennaOn();
-}
-
 void RC522_Init(void) {
 	SPI1_Init();
 	RC522_Reset();
@@ -296,6 +282,22 @@ void RC522_Init(void) {
 	RC522_WriteReg(TModeReg, 0x8d);
 	RC522_WriteReg(TPrescalerReg, 0x3e);
 	RC522_WriteReg(TxAutoReg, 0x40);
+	
+	RC522_WriteReg(ComIEnReg, 0x77|0x80);	
+}
+
+void RC522_Config(void) {
+	RC522_ClearRegBits(Status2Reg, 0x08);
+	RC522_WriteReg(ModeReg, 0x3d);
+	RC522_WriteReg(RxSelReg, 0x86);
+	RC522_WriteReg(RFCfgReg, 0x7f);
+	RC522_WriteReg(TReloadRegL, 30);
+	RC522_WriteReg(TReloadRegH, 0);
+	RC522_WriteReg(TModeReg, 0x8d);
+	RC522_WriteReg(TPrescalerReg, 0x3e);
+	RC522_AntennaOff();
+	delay(200);
+	RC522_AntennaOn();
 }
 
 u8 RC522_Transceive(u8 *wbuf, u8 wLen, u8 *rbuf, u8 *rLen) {
