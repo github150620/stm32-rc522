@@ -10,6 +10,8 @@
 //
 #include "rc522.h"
 #include "stm32f10x.h"
+#include "stdio.h"
+#include "string.h"
 
 // Table 5: MFRC522 Registers Overview
 // Page 0: Command and Status
@@ -161,6 +163,12 @@
 #define SoftReset         0x0F
 
 #define RBUF_MAX_LEN 18
+
+static void delay(u32 i) {
+	while (i) {
+		i--;
+	}
+}
 
 void SPI1_Init() {
 	GPIO_InitTypeDef GPIO_InitStructure;
