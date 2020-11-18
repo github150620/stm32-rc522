@@ -43,6 +43,7 @@ int main(void) {
 			continue;
 		}
 		
+		printf("\nRead\n");
 		for (addr=0;addr<16;addr++){
 			printf("%02x: ", addr);
 			err = RC522_Auth(0x61, addr, KEYB, id);
@@ -59,6 +60,20 @@ int main(void) {
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X ", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7]);
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X\n", buf[8], buf[9], buf[10], buf[11], buf[12], buf[13], buf[14], buf[15]);
 		}
+		
+		/*
+		printf("\nWrite\n");
+		addr = 1;
+		err = RC522_Auth(0x60, addr, KEYA, id);
+		if (err != 0) {
+			printf("Auth: %d\n", err);
+		} else {
+			err = RC522_Write(addr, block);
+			if (err != 0) {
+				printf("Write: %d\n", err);
+			}
+		}
+		*/
 
 		printf("\nHalt\n");
 		err = RC522_Halt();
