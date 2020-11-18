@@ -1,6 +1,8 @@
 #ifndef _RC522_H
 #define _RC522_H
 
+#include "stm32f10x.h"
+
 void RC522_Reset  (void);
 void RC522_Init   (void);
 void RC522_Config (void);
