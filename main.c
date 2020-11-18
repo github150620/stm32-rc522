@@ -45,7 +45,6 @@ int main(void) {
 		
 		printf("\nRead\n");
 		for (addr=0;addr<16;addr++){
-			printf("%02x: ", addr);
 			err = RC522_Auth(0x61, addr, KEYB, id);
 			if (err != 0) {
 				printf("Auth: %d\n", err);
@@ -57,6 +56,7 @@ int main(void) {
 				printf("Read: %d\n", err);
 				break;
 			}
+			printf("%02x: ", addr);
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X ", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7]);
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X\n", buf[8], buf[9], buf[10], buf[11], buf[12], buf[13], buf[14], buf[15]);
 		}
