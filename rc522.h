@@ -1,11 +1,21 @@
 /*
- * S50's sector default values:
- *   ff ff ff ff ff ff ff 07 80 69 ff ff ff ff ff ff
- *
- *        KEYA: ff ff ff ff ff ff
- *   Privilege: ff 07 80 69
- *        KEYB: ff ff ff ff ff ff
- */
+
+PA3 -> RST
+PA4 -> NSS
+PA5 -> SCK
+PA6 -> MOSI
+PA7 -> MISO
+3V3 -> 3V3
+GND -> GND
+
+S50's sector default values:
+  ff ff ff ff ff ff ff 07 80 69 ff ff ff ff ff ff
+
+     KEYA: ff ff ff ff ff ff
+Privilege: ff 07 80 69
+     KEYB: ff ff ff ff ff ff
+*/
+
 #ifndef _RC522_H
 #define _RC522_H
 
