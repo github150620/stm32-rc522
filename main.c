@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "rc522.h"
 
 int main(void) {
 	u8 err;
@@ -14,9 +15,8 @@ int main(void) {
 	printf("Config RC522...\n");
 	RC522_Config();
 	
-	RC522_WriteReg(ComIEnReg, 0x77|0x80);
 	while (1) {
-		printf("\nRequest\n");
+		printf(".");
 		type = 0;
 		err = RC522_Request(&type);
 		if (err != 0) {
@@ -48,13 +48,13 @@ int main(void) {
 			err = RC522_Auth(0x61, addr, KEYB, id);
 			if (err != 0) {
 				printf("Auth: %d\n", err);
-        break;
+				break;
 			}
 
 			err = RC522_Read(addr, buf);
 			if (err != 0) {
 				printf("Read: %d\n", err);
-        break;
+				break;
 			}
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X ", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5], buf[6], buf[7]);
 			printf("%02X %02X %02X %02X %02X %02X %02X %02X\n", buf[8], buf[9], buf[10], buf[11], buf[12], buf[13], buf[14], buf[15]);
