@@ -1,13 +1,15 @@
+/*
+ * S50's sector default values:
+ *   ff ff ff ff ff ff ff 07 80 69 ff ff ff ff ff ff
+ *
+ *        KEYA: ff ff ff ff ff ff
+ *   Privilege: ff 07 80 69
+ *        KEYB: ff ff ff ff ff ff
+ */
 #ifndef _RC522_H
 #define _RC522_H
 
 #include "stm32f10x.h"
-
-u8 RC522_SectorDefault[16] = {
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff,  // KEYA
-	0xff, 0x07, 0x80, 0x69,              // Privilege
-	0xff, 0xff, 0xff, 0xff, 0xff, 0xff,  // KEYB
-};
 
 void RC522_Reset  (void);
 void RC522_Init   (void);
